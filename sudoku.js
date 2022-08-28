@@ -59,7 +59,6 @@ function solveSudoku(board) {
             }
         }
     }
-    let print = false;
     function recur(cur) {
         if (cur === unassigned.length) {
             return true;
