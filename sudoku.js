@@ -14,21 +14,12 @@ function isValidSudoku(board) {
             }
             boxj = Math.floor(j / sqrt);
             const bit = 1 << parseInt(board[i][j], 10) - 1;
-            if ((rows[i] & bit) !== 0) {
+            if ((rows[i] & bit) !== 0 || (cols[j] & bit) !== 0 || (boxes[boxi + boxj] & bit) !== 0) {
                 return false;
-            } else {
-                rows[i] |= bit;
             }
-            if ((cols[j] & bit) !== 0) {
-                return false;
-            } else {
-                cols[j] |= bit;
-            }
-            if ((boxes[boxi + boxj] & bit) !== 0) {
-                return false;
-            } else {
-                boxes[boxi + boxj] |= bit;
-            }
+            rows[i] |= bit;
+            cols[j] |= bit;
+            boxes[boxi + boxj] |= bit;
         }
     }
     return true;
